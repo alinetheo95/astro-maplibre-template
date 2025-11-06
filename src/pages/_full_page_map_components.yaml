@@ -1,13 +1,34 @@
-- id: 'bikes'
-  label: 'Bike Lanes'
+- id: 'nyc-trees'
+  label: 'NYC Street Trees 2015'
   toggle: true  
-  visible: false
+  visible: true
   data-type: 'geojson'
-  layer-type: 'line'
-  url: 'https://data.cityofnewyork.us/resource/mzxg-pwib.geojson?$limit=10000'
+  layer-type: 'circle'
+  url: 'https://data.cityofnewyork.us/resource/uvpi-gqnh.geojson?$limit=50000'
   paint:
-    line-color: '#000000'
-    line-width: 3
+    circle-color: '#77c049'
+    circle-radius: 3
+  mouseEvent:
+    - type: "click"
+      content:
+        - h1:
+            - str: "Street Tree Info"
+        - p:
+            - str: "Species: "
+            - property: "spc_common"
+              else: "Unknown"
+        - p:
+            - str: "Status: "
+            - property: "status"
+              else: "N/A"
+        - p:
+            - str: "Health: "
+            - property: "health"
+              else: "N/A"
+        - p:
+            - str: "Diameter: "
+            - property: "tree_dbh"
+              else: "N/A"
 
 - id: 'vector-tile'
   label: 'Vector Tiles'
@@ -38,25 +59,3 @@
                 [-71.516, 46.437],
                 [-71.516, 37.936],
                 [-80.425, 37.936]]
-
-- id: 'pizza'
-  label: 'Pizza Places'
-  toggle: true
-  visible: true
-  data-type: 'geojson'
-  layer-type: 'circle'
-  url: 'https://data.cityofnewyork.us/resource/43nn-pn8j.geojson?cuisine_description=Pizza&$limit=10000'
-  paint:
-    circle-color: '#ff0000'
-    circle-radius: 5
-  mouseEvent:
-    - type: "click"
-      content:
-        - h1:
-            - str: "Feature Info"
-        - p:
-            - str: "Description"
-        - p:
-            - str: "Name: "
-            - property: "dba"
-              else: "N/A"
