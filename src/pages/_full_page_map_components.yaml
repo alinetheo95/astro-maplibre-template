@@ -11,7 +11,7 @@
   mouseEvent:
     - type: "click"
       content:
-        - h1:
+        - h5:
             - str: "Street Tree Info"
         - p:
             - str: "Species: "
